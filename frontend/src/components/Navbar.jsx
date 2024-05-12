@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { IoMdSearch } from "react-icons/io";
 
 const Navbar = () => {
-    const user=true
+    const user=false
   return (
     <div className="flex justify-between items-center px-6 md:px-20 py-4"> {/* Adjusted class */}
       <h1 className="text-lg md:text-xl font-extrabold"><Link to="/">Blog Market</Link></h1>
