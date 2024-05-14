@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
 import { IoMdSearch } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const user=false
@@ -8,7 +8,7 @@ const Navbar = () => {
       <h1 className="text-lg md:text-xl font-extrabold"><Link to="/">Blog Market</Link></h1>
       <div className="flex justify-center items-center space-x-0">
         <p><IoMdSearch /></p>
-        <input className="outline-none px-3 py-1" placeholder="Search a post" type="text"/>
+        <input className="outline-none px-3 py-1" placeholder="Search a post" type="text"/>   
 
       </div>
       <div className="flex items-center space-x-4"> {/* Adjusted class */}
@@ -18,5 +18,4 @@ const Navbar = () => {
     </div>
   )
 }
-
 export default Navbar
