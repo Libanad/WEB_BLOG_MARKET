@@ -43,16 +43,27 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-// Get upost details
+// Get post details
 router.get("/:id", async (req, res) => {
     try {
-         const user=await User.findById(req.params.id)
-         const {password,...info}=user._doc
-         res.status(200).json(user)
+         const post=await User.findById(req.params.id)
+         
+         res.status(200).json(post)
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
+
+// Get post 
+router.get("/", async (req, res) => {
+    try {
+         const post=await Post.find()
+        
+         res.status(200).json(posts)
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
