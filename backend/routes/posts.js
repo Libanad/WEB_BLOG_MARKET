@@ -48,8 +48,13 @@ router.get("/:id", async (req, res) => {
 
 // Get all posts
 router.get("/", async (req, res) => {
+    const query=req.query
+    
     try {
-         const posts = await Post.find();
+        const searchFilter={
+            title:{$regex:query.search, $options:"i"}
+        }
+         const posts = await Post.find(query.search?searchFilter:null);
          res.status(200).json(posts);
     } catch (err) {
         res.status(500).json(err);
@@ -65,5 +70,15 @@ router.get("/user/:userId", async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+// search posts
+router.get("/search/:prompt",async(req,res)=>{
+    try{
+
+    }
+    catch(err){
+        res.status(500).json(err)
+    }
+})
 
 module.exports = router;
