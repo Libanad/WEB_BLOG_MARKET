@@ -5,38 +5,49 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
-  const user = true;
+  const user = true; // Change to true to simulate a logged-in user
 
   const showMenu = () => {
     setMenu(!menu);
   };
 
   return (
-    <div className="flex justify-between items-center px-6 md:px-20 py-4"> {/* Adjusted class */}
-      <h1 className="text-lg md:text-xl font-extrabold"><Link to="/">Blog Market</Link></h1>
+    <div className="flex justify-between items-center px-6 md:px-20 py-4">
+      <h1 className="text-lg md:text-xl font-extrabold">
+        <Link to="/">Blog Market</Link>
+      </h1>
       <div className="flex justify-center items-center space-x-0">
         <p><IoMdSearch /></p>
-        <input className="outline-none px-3 py-1" placeholder="Search a post" type="text"/>
+        <input className="outline-none px-3 py-1" placeholder="Search a post" type="text" />
       </div>
-      <div className="hidden md:flex items-center space-x-4"> {/* Adjusted class */}
-        {user ? <h3><Link to="/write">Write</Link></h3> : <h3 className="mr-4"><Link to="/login">Login</Link></h3>} {/* Added margin-right */}
-        {user ? <h3>Profile</h3> : <h3><Link to="/register">Register</Link></h3>}
+      <div className="hidden md:flex items-center space-x-4">
+        {user ? (
+          <>
+            <h3><Link to="/write">Write</Link></h3>
+            <h3><Link to="/profile">Profile</Link></h3>
+          </>
+        ) : (
+          <>
+            <h3><Link to="/login">Login</Link></h3>
+            <h3><Link to="/register">Register</Link></h3>
+          </>
+        )}
       </div>
-      <div onClick={showMenu} className="md:hidden text-lg relative">
-        <p><FaBarsProgress /></p>
+      <div className="md:hidden text-lg relative">
+        <p onClick={showMenu} className="cursor-pointer">
+          <FaBarsProgress />
+        </p>
         {menu && (
           <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
             <ul>
               {!user && (
                 <>
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link to="/login">Login</Link></li>
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link to="/register">Register</Link></li>
-                </>
-              )}
-              {user && (
-                <>
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link to="/write">Write</Link></li>
-                  <li className="px-4 py-2 hover:bg-gray-100"><Link to="/profile">Profile</Link></li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    <Link to="/register">Register</Link>
+                  </li>
                 </>
               )}
             </ul>
