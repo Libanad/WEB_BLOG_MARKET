@@ -2,10 +2,13 @@ import { useState } from "react";
 import { FaBarsProgress } from "react-icons/fa6";
 import { IoMdSearch } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Menu from "./Menu";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
-  const user = true; // Change to true to simulate a logged-in user
+  const user = true;
+  const id=6677;
+   // Change to true to simulate a logged-in user
 
   const showMenu = () => {
     setMenu(!menu);
@@ -24,35 +27,20 @@ const Navbar = () => {
         {user ? (
           <>
             <h3><Link to="/write">Write</Link></h3>
-            <h3><Link to="/profile">Profile</Link></h3>
+            <h3><Link to={"/profile/${user.id}"}>Profile</Link></h3>
           </>
         ) : (
           <>
-            <h3><Link to="/login">Login</Link></h3>
+            <h3 className="mr-4"><Link to="/login">Login</Link></h3>
             <h3><Link to="/register">Register</Link></h3>
           </>
         )}
       </div>
-      <div className="md:hidden text-lg relative">
-        <p onClick={showMenu} className="cursor-pointer">
+      <div onClick={showMenu} className="md:hidden text-lg relative">
+        <p className="cursor-pointer">
           <FaBarsProgress />
         </p>
-        {menu && (
-          <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
-            <ul>
-              {!user && (
-                <>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <Link to="/login">Login</Link>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <Link to="/register">Register</Link>
-                  </li>
-                </>
-              )}
-            </ul>
-          </div>
-        )}
+        {menu && <Menu user={user} />}
       </div>
     </div>
   );
