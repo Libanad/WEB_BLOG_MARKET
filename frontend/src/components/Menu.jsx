@@ -1,33 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react"
+import { UserContext } from "../context/usercontext"
+import axios from "axios"
 
-const Menu = ({ user }) => {
+
+
+const Menu = () => {
+const {user}=useContext(UserContext)
+const {setUser}=useContext(UserContext)
+
+const handleLogout =async()=>{
+  try {
+    const res= await axios.get(URL+"/api/auth/logout")
+    
+
+  } catch (error) {
+    
+  }
+}
+
+
   return (
-    <div className="absolute top-12 right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
-      <ul className="py-1">
-        <li>
-          <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-            Profile
-          </Link>
-        </li>
-        <li>
-          <Link to="/write" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-            Write
-          </Link>
-        </li>
-        <li>
-          <Link to="/myblog" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-            My Blog
-          </Link>
-        </li>
-        <li>
-          <Link to="/logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-            Logout
-          </Link>
-        </li>
-      </ul>
-    </div>
-  );
-};
+    <div className="bg-black w-[200px] z-10 flex flex-col items-start absolute top-12 right-6 md:right-32 rounded-md p-4 space-y-4">
+    {!user && <h3 className="text-white text-sm hover:text-gray-500 cursor-pointer"><Link to="/login">Login</Link></h3>}
+    {!user &&<h3 className="text-white text-sm hover:text-gray-500 cursor-pointer"><Link to="/register">Register</Link></h3>}
+    {user && <h3 className="text-white text-sm hover:text-gray-500 cursor-pointer"><Link to={"/profile/"+user._id}>Profile</Link></h3>}
+    {user &&<h3 className="text-white text-sm hover:text-gray-500 cursor-pointer"><Link to="/write">Write</Link></h3>}
+    {user && <h3 className="text-white text-sm hover:text-gray-500 cursor-pointer"><Link to={"/myblogs/"+user._id}>My blogs</Link></h3>}
+    {user &&<h3 onClick={handleLogout} className="text-white text-sm hover:text-gray-500 cursor-pointer">Logout</h3>}
 
-export default Menu;
+    </div>
+  )
+}
+
+export default Menu
