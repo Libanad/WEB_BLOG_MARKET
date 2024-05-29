@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBarsProgress } from "react-icons/fa6";
 import { IoMdSearch } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Menu from "./Menu";
+import { UserContext } from "../context/usercontext";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
-  const user = true;
-  const id=6677;
-   // Change to true to simulate a logged-in user
+  const { user } = useContext(UserContext); // Retrieve user context
 
   const showMenu = () => {
     setMenu(!menu);
@@ -27,7 +26,7 @@ const Navbar = () => {
         {user ? (
           <>
             <h3><Link to="/write">Write</Link></h3>
-            <h3><Link to={"/profile/${user.id}"}>Profile</Link></h3>
+            <h3><Link to={`/profile/${user.id}`}>Profile</Link></h3>
           </>
         ) : (
           <>
