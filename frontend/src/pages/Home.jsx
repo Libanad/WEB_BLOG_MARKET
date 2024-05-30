@@ -4,6 +4,10 @@ import Navbar from "../components/Navbar"
 
 
 const Home = () => {
+
+  const fetchPost=async(()=>{
+    
+  })
   return (
     <>
     <Navbar/>
