@@ -4,10 +4,13 @@ import HomePost from "../components/HomePosts"
 import Navbar from "../components/Navbar"
 import { useEffect, useState } from "react"
 import { URL } from "../url"
+import { useLocation } from "react-router-dom"
 
 
 const Home = () => {
 
+  const path= useLocation()
+  console.log(path)
   const [posts, setPosts]=useState([])
 
   const fetchPosts =async()=>{
