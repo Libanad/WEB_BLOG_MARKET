@@ -9,13 +9,13 @@ import { useLocation } from "react-router-dom"
 
 const Home = () => {
 
-  const path= useLocation()
-  console.log(path)
+  const {search}= useLocation()
+  // console.log(search)
   const [posts, setPosts]=useState([])
 
   const fetchPosts =async()=>{
     try {
-      const res= await axios.get(URL+"/api/posts/")
+      const res= await axios.get(URL+"/api/posts/"+search)
       // console.log(res.data)
       setPosts(res.data)
 
