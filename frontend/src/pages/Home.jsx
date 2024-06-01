@@ -2,16 +2,21 @@ import axios from "axios"
 import Footer from "../components/Footer"
 import HomePost from "../components/HomePosts"
 import Navbar from "../components/Navbar"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { URL } from "../url"
 
 
 const Home = () => {
 
+  const [posts, setPosts]=useState([])
+
   const fetchPost=async()=>{
     try {
       const res= await axios.get(URL+"/api/posts/")
-      console.log(res.data)
+      // console.log(res.data)
+      setPosts(res.data)
+
+
     } catch (err) {
         console.log(err)
     }
