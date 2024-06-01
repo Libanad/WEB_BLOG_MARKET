@@ -29,13 +29,13 @@ const Home = () => {
   useEffect(()=>{
     fetchPosts()
 
-  },[])
+  },[search])
 
 
   return (
     <>
     <Navbar/>
-    <div className="px-8 md:px-[200px]">
+    <div className="px-8 md:px-[200px] min-h-[80vh]">
       {posts.map((post)=>(
         <HomePost key={post._id} post={post}/>
       ))}
