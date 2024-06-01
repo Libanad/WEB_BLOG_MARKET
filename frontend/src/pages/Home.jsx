@@ -32,11 +32,9 @@ const Home = () => {
     <>
     <Navbar/>
     <div className="px-8 md:px-[200px]">
-      <HomePost/>
-      <HomePost/>
-      <HomePost/>
-      <HomePost/>
-      <HomePost/>
+      {posts.map((posts)=>(
+        <HomePost/>
+      ))}
     </div>
     <Footer/>
     </>
