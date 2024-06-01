@@ -6,6 +6,8 @@ import Menu from "./Menu";
 import { UserContext } from "../context/usercontext";
 
 const Navbar = () => {
+
+  const [prompt, setPrompt] = useState("")
   const [menu, setMenu] = useState(false);
   const { user } = useContext(UserContext); // Retrieve user context
 
@@ -20,7 +22,7 @@ const Navbar = () => {
       </h1>
       <div className="flex justify-center items-center space-x-0">
         <p className="cursor-pointer"><IoMdSearch /></p>
-        <input className="outline-none px-3 py-1" placeholder="Search a post" type="text" />
+        <input onChange={(e)=>setPrompt(e.target.value)} className="outline-none px-3 py-1" placeholder="Search a post" type="text" />
       </div>
       <div className="hidden md:flex items-center space-x-4">
         {user ? (
