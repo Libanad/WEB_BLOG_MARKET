@@ -1,3 +1,4 @@
+import axios from "axios"
 import Footer from "../components/Footer"
 import HomePost from "../components/HomePosts"
 import Navbar from "../components/Navbar"
@@ -6,6 +7,11 @@ import Navbar from "../components/Navbar"
 const Home = () => {
 
   const fetchPost=async()=>{
+    try {
+      const res= await axios.get(URL+"/api/posts/")
+    } catch (error) {
+      
+    }
     
   }
   return (
