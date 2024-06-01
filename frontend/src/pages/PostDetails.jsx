@@ -1,3 +1,4 @@
+import { useState } from "react"
 import Comment from "../components/Comment"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
@@ -5,6 +6,7 @@ import { BiEdit } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
 
 const PostDetails = () => {
+  const [post, setPost]=useState['']
   return (
     <div>
       <Navbar />
