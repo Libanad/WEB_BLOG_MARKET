@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar"
 import { useEffect, useState } from "react"
 import { URL } from "../url"
 import { useLocation } from "react-router-dom"
+import Loader from "../components/Loader"
 
 
 const Home = () => {
@@ -13,10 +14,10 @@ const Home = () => {
   // console.log(search)
   const [posts, setPosts]=useState([])
   const [noResults,setNoResults]=useState(false)
-  const [loader,setloader]=useState(false)
+  const [loader,setLoader]=useState(false)
 
   const fetchPosts =async()=>{
-    setloader(true)
+    setLoader(true)
     try {
       const res= await axios.get(URL+"/api/posts/"+search)
       // console.log(res.data)
@@ -27,12 +28,12 @@ const Home = () => {
       else{
         setNoResults(false)
       }
-      setloader(false)
+      setLoader(false)
 
 
     }catch (error) {
       console.error(error)
-      setloader(true)
+      setLoader(true)
     }
     
     
@@ -47,7 +48,7 @@ const Home = () => {
     <>
     <Navbar/>
     <div className="px-8 md:px-[200px] min-h-[80vh]">
-      {!noResults?posts.map((post)=>(
+      {loader?<div className="h-[40vh] flex justify-center items-center"><Loader/></div>:!noResults?posts.map((post)=>(
         <HomePost key={post._id} post={post}/>
       )):<h3 className="text-center font-bold mt-16">No posts available</h3>}
     </div>
