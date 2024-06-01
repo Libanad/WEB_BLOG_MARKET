@@ -9,6 +9,7 @@ const Home = () => {
   const fetchPost=async()=>{
     try {
       const res= await axios.get(URL+"/api/posts/")
+      console.log(res.data)
     } catch (error) {
       
     }
