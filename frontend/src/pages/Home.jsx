@@ -3,6 +3,7 @@ import Footer from "../components/Footer"
 import HomePost from "../components/HomePosts"
 import Navbar from "../components/Navbar"
 import { useEffect } from "react"
+import { URL } from "../url"
 
 
 const Home = () => {
