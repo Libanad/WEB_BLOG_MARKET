@@ -33,7 +33,7 @@ const Home = () => {
     <Navbar/>
     <div className="px-8 md:px-[200px]">
       {posts.map((posts)=>(
-        <HomePost/>
+        <HomePost key={posts._id} post={posts}/>
       ))}
     </div>
     <Footer/>
