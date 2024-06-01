@@ -11,7 +11,7 @@ const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const { user } = useContext(UserContext); // Retrieve user context
   const navigate=useNavigate()
-  console.log(prompt)
+  // console.log(prompt)
 
   const showMenu = () => {
     setMenu(!menu);

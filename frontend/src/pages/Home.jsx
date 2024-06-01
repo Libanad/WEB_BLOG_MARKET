@@ -12,6 +12,7 @@ const Home = () => {
   const {search}= useLocation()
   // console.log(search)
   const [posts, setPosts]=useState([])
+  const []
 
   const fetchPosts =async()=>{
     try {
