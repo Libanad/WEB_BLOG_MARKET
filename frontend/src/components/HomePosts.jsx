@@ -13,8 +13,8 @@ const HomePost = ({ post }) => {
         <div className="flex mb-2 text-sm font-semibold text-gray-500 items-center justify-between md:mb-4">
           <p>{post.username}</p>
           <div className="flex space-x-2">
-            <p>{new Date(post.updatedAt).toString()}</p>
-            <p>16:45</p>
+            <p>{new Date(post.updatedAt).toString().slice(0,15)}</p>
+            <p>{new Date(post.updatedAt).toString().slice(16,24)}</p>
           </div>
         </div>
         <p className="text-sm md:text-lg">{post.desc ? post.desc.slice(0, 200) + "...Read more" : "Description not available"}</p>
