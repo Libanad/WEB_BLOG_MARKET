@@ -11,10 +11,13 @@ const Home = () => {
       const res= await axios.get(URL+"/api/posts/")
       console.log(res.data)
     } catch (error) {
-      
+        console.log(error)
     }
     
   }
+  
+
+
   return (
     <>
     <Navbar/>
