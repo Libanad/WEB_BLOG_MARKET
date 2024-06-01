@@ -8,7 +8,7 @@ import { URL } from "../url"
 
 const Home = () => {
 
-  const [posts, setPosts]=useState([])
+  const [post, setPost]=useState([])
 
   const fetchPost=async()=>{
     try {
@@ -32,8 +32,8 @@ const Home = () => {
     <>
     <Navbar/>
     <div className="px-8 md:px-[200px]">
-      {posts.map((posts)=>(
-        <HomePost key={posts._id} post={posts}/>
+      {post.map((post)=>(
+        <HomePost key={post._id} post={post}/>
       ))}
     </div>
     <Footer/>
