@@ -1,26 +1,26 @@
-const HomePost = (post) => {
+const HomePost = ({ post }) => {
   return (
     <div className="w-full flex mt-8 space-x-4">
-      {/* left */ }
+      {/* left */}
       <div className="w-[30%] h-[200px] flex justify-center items-center">
-        <img src={post.photo} alt="" className="h-full w-full object-cover" />
+        <img src={post.photo} alt={post.title} className="h-full w-full object-cover" />
       </div>
-      {/* right */ }
-      <div className="flex flex-col w-[70%]">
+      {/* right */}
+      <div className="flex flex-col w-[65%]">
         <h1 className="text-xl font-bold md:mb-2 ab-1 md:text-2xl">
-         {post.title}
+          {post.title}
         </h1>
-        <div className="flex mb-2 text-sm font-semibold text-grey-500 items-center justify-between md:mb-4">
-          <p>{post.username}</p> 
+        <div className="flex mb-2 text-sm font-semibold text-gray-500 items-center justify-between md:mb-4">
+          <p>{post.username}</p>
           <div className="flex space-x-2">
             <p>16/06/2024</p>
             <p>16:45</p>
           </div>
         </div>
-        <p className="text-sm md:text-lg">{post.desc}</p>
+        <p className="text-sm md:text-lg">{post.desc ? post.desc.slice(0, 200) + "...Read more" : "Description not available"}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomePost
+export default HomePost;

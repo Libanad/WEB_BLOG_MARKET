@@ -8,22 +8,23 @@ import { URL } from "../url"
 
 const Home = () => {
 
-  const [post, setPost]=useState([])
+  const [posts, setPosts]=useState([])
 
-  const fetchPost=async()=>{
+  const fetchPosts =async()=>{
     try {
       const res= await axios.get(URL+"/api/posts/")
       // console.log(res.data)
       setPosts(res.data)
 
 
-    } catch (err) {
-        console.log(err)
+    }catch (error) {
+      console.error(error);
     }
+    
     
   }
   useEffect(()=>{
-    fetchPost()
+    fetchPosts()
 
   },[])
 
@@ -32,7 +33,7 @@ const Home = () => {
     <>
     <Navbar/>
     <div className="px-8 md:px-[200px]">
-      {post.map((post)=>(
+      {posts.map((post)=>(
         <HomePost key={post._id} post={post}/>
       ))}
     </div>

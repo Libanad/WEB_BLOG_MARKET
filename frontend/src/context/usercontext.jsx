@@ -20,7 +20,7 @@ export const UserContextProvider = ({ children }) => {
         setUser(res.data)
         
     } catch (error) {
-        console.log(err)
+        console.log(error)
         
     }
   }
