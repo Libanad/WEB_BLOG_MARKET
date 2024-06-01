@@ -19,7 +19,7 @@ const Navbar = () => {
         <Link to="/">Blog Market</Link>
       </h1>
       <div className="flex justify-center items-center space-x-0">
-        <p><IoMdSearch /></p>
+        <p className="cursor-pointer"><IoMdSearch /></p>
         <input className="outline-none px-3 py-1" placeholder="Search a post" type="text" />
       </div>
       <div className="hidden md:flex items-center space-x-4">
