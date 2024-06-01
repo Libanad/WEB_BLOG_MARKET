@@ -13,8 +13,10 @@ const Home = () => {
   // console.log(search)
   const [posts, setPosts]=useState([])
   const [noResults,setNoResults]=useState(false)
+  const [loader,setloader]=useState(false)
 
   const fetchPosts =async()=>{
+    setloader(true)
     try {
       const res= await axios.get(URL+"/api/posts/"+search)
       // console.log(res.data)
@@ -25,10 +27,12 @@ const Home = () => {
       else{
         setNoResults(false)
       }
+      setloader(false)
 
 
     }catch (error) {
-      console.error(error);
+      console.error(error)
+      setloader(true)
     }
     
     
