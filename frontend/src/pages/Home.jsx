@@ -12,13 +12,19 @@ const Home = () => {
   const {search}= useLocation()
   // console.log(search)
   const [posts, setPosts]=useState([])
-  const []
+  const [noResults,setNoResults]=useState(false)
 
   const fetchPosts =async()=>{
     try {
       const res= await axios.get(URL+"/api/posts/"+search)
       // console.log(res.data)
       setPosts(res.data)
+      if (res.data.length===0) {
+        setNoResults(true)
+      }
+      else{
+        setNoResults(false)
+      }
 
 
     }catch (error) {
@@ -37,9 +43,9 @@ const Home = () => {
     <>
     <Navbar/>
     <div className="px-8 md:px-[200px] min-h-[80vh]">
-      {posts.map((post)=>(
+      {!noResults?posts.map((post)=>(
         <HomePost key={post._id} post={post}/>
-      ))}
+      )):<h3 className="text-center font-bold mt-16">No posts available</h3>}
     </div>
     <Footer/>
     </>
