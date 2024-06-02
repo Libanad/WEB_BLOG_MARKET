@@ -8,7 +8,12 @@ import { MdDelete } from 'react-icons/md'
 const PostDetails = () => {
   
   const fetchPosts=async()=>{
+    try{
 
+    }
+    catch(err){
+      
+    }
   }
   return (
     <div>
