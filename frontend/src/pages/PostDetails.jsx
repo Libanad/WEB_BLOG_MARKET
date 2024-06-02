@@ -12,7 +12,8 @@ const PostDetails = () => {
 
     }
     catch(err){
-      
+      console.log(err)
+
     }
   }
   return (
