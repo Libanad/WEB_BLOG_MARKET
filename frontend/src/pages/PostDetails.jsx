@@ -4,18 +4,22 @@ import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import { BiEdit } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
+import { useParams } from "react-router-dom"
 
 const PostDetails = () => {
+
+    const postId=useParams()
+    console.log(postId)
   
-  const fetchPosts=async()=>{
-    try{
+  // const fetchPosts=async()=>{
+  //   try{
+  //     const res=await
+  //   }
+  //   catch(err){
+  //     console.log(err)
 
-    }
-    catch(err){
-      console.log(err)
-
-    }
-  }
+  //   }
+  // }
   return (
     <div>
       <Navbar />
