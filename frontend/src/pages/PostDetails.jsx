@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import Comment from "../components/Comment"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
@@ -6,15 +6,18 @@ import { BiEdit } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import { URL } from "../url"
+
 
 const PostDetails = () => {
 
-    const postId=useParams()
+    const postId=useParams().id
     
   
-  const fetchPosts=async()=>{
+  const fetchPost=async()=>{
     try{
       const res=await axios.get(URL+"/api/posts/"+postId)
+      comsole.log(res.data)
     }
     catch(err){
       console.log(err)
@@ -23,8 +26,9 @@ const PostDetails = () => {
   }
 
   useEffect(()=>{
-    
-  })
+    fetchPost()
+
+  },[postId])
   return (
     <div>
       <Navbar />
