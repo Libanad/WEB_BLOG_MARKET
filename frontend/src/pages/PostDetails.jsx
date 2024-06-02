@@ -7,6 +7,9 @@ import { MdDelete } from 'react-icons/md'
 
 const PostDetails = () => {
   
+  const fetchPosts=async()=>{
+
+  }
   return (
     <div>
       <Navbar />
