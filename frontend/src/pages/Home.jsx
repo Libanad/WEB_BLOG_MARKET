@@ -1,12 +1,12 @@
 import axios from "axios"
+import { useContext, useEffect, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
 import Footer from "../components/Footer"
 import HomePost from "../components/HomePosts"
-import Navbar from "../components/Navbar"
-import { useContext, useEffect, useState } from "react"
-import { URL } from "../url"
-import { Link, useLocation } from "react-router-dom"
 import Loader from "../components/Loader"
+import Navbar from "../components/Navbar"
 import { UserContext } from "../context/usercontext"
+import { URL } from "../url"
 
 
 const Home = () => {
