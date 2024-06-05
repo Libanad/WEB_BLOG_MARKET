@@ -1,11 +1,11 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
-import Comment from "../components/Comment"
-import Footer from "../components/Footer"
-import Navbar from "../components/Navbar"
 import { BiEdit } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
 import { useParams } from "react-router-dom"
-import axios from "axios"
+import Comment from "../components/Comment"
+import Footer from "../components/Footer"
+import Navbar from "../components/Navbar"
 import { URL } from "../url"
 
 
@@ -16,7 +16,7 @@ const PostDetails = () => {
 
   const fetchPost = async () => {
     try {
-      const res = await axios.get(URL + "/api/posts/" + postId)
+      const res = await axios.get(URL + "/api/posts/"+postId)
       // console.log(res.data)
       setPost(res.data)
     }
@@ -55,7 +55,9 @@ const PostDetails = () => {
           <p>categories:</p>
           <div className="flex justify-center items-center space-x-2">
             {post.categories?.map((c,i)=>(
+              <>
               <div key={i} className="bg-gray-300 rounded-lg px-3 py-1">{c}</div>
+              </>
             ))}
             
             
