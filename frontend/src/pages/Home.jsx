@@ -53,7 +53,7 @@ const Home = () => {
     <div className="px-8 md:px-[200px] min-h-[80vh]">
       {loader?<div className="h-[40vh] flex justify-center items-center"><Loader/></div>:!noResults?posts.map((post)=>(
         <>
-        <Link to={user?`/posts/post/{$post._id}`:"/login"}>
+        <Link to={user?`/posts/post/${post._id}`:"/login"}>
         <HomePost key={post._id} post={post}/>
         </Link>
         </>
