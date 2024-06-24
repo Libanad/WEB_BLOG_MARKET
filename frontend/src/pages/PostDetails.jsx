@@ -1,27 +1,36 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { BiEdit } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
-import { useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 import Comment from "../components/Comment"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import { URL } from "../url"
+import { UserContext } from "../context/usercontext"
+import Loader from "../components/Loader"
 
 
 const PostDetails = () => {
 
   const postId = useParams().id
   const [post, setPost] = useState({})
+  const {user}=useContext(UserContext)
+  const [loader, setLoader]=useState(false)
+  
+
 
   const fetchPost = async () => {
+    setLoader(true)
     try {
       const res = await axios.get(URL+"/api/posts/"+postId)
       // console.log(res.data)
       setPost(res.data)
+      setLoader(false)
     }
     catch (err) {
       console.log(err)
+      setLoader(true)
     }
   }
 
@@ -32,13 +41,14 @@ const PostDetails = () => {
   return (
     <div>
       <Navbar />
-      <div className="px-8 px-[200px] mt-8">
+     {loader?<div className="h-[80vh] flex justify-center items-center w-full"><Loader/></div> :<div className="px-8 px-[200px] mt-8">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-black md:text-3xl">{post.title}</h1>
-          <div className="flex items-center justify-end space-x-2">
+          {user?._id===post?.userId && <div className="flex items-center justify-end space-x-2">
+    
             <p className="mr-2"><BiEdit /></p>
             <p><MdDelete /></p>
-          </div>
+          </div>}
         </div>
         <div className="flex items-center justify-between mt-2 md:mt-4">
           <p>@{post.username}</p>
@@ -75,7 +85,7 @@ const PostDetails = () => {
           <input type="text" placeholder="Write a comment" className="md:w-[90%] outline-none px:4 mt:4 md:mt-0" />
           <button className="bg-black text-sm text-white px-4 py-2 md:w-[10%] mt-4 md:mt-0">Add Comment</button>
         </div>
-      </div>
+      </div>}
       <Footer />
     </div>
   )
