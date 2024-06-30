@@ -6,7 +6,7 @@ import { useLocation, useParams } from "react-router-dom"
 import Comment from "../components/Comment"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
-import { URL } from "../url"
+import { URL,IF } from "../url"
 import { UserContext } from "../context/usercontext"
 import Loader from "../components/Loader"
 
@@ -57,7 +57,7 @@ const PostDetails = () => {
             <p>{new Date(post.updatedAt).toString().slice(16, 24)}</p>
           </div>
         </div>
-        <img src={post.photo} className="w-3/4 mx-auto" alt="" />
+        <img src={IF+post.photo} className="w-3/4 mx-auto" alt="" />
         <p className="mx-auto mt-8">
           {post.desc}
         </p>

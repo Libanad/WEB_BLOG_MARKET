@@ -15,6 +15,7 @@ const CreatePost = () => {
     const { user } = useContext(UserContext)
     const [cat, setCat] = useState("");
     const [cats, setCats] = useState([]);
+    
 
     const navigate=useNavigate()
 
@@ -46,6 +47,7 @@ const CreatePost = () => {
             data.append("img", filename)
             data.append("file", file)
             post.photo = filename
+            console.log(data)
 
             // image upload
             try {
