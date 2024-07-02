@@ -5,8 +5,16 @@ import Navbar from "../components/Navbar";
 
 
 const EditPost = () => {
+    const [title, setTitle]=useState("")
+    const [desc, setDesc]= useState("")
+    const [file, setFile]= useState(null)
+
     const [cat, setCat] = useState("");
     const [cats, setCats] = useState([]);
+
+    const fetchPost=async()=>{
+
+    }
 
     const deleteCategory = (index) => {
         const updatedCats = [...cats];

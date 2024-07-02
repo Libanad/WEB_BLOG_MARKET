@@ -59,7 +59,7 @@ const PostDetails = () => {
           <h1 className="text-2xl font-bold text-black md:text-3xl">{post.title}</h1>
           {user?._id === post?.userId && <div className="flex items-center justify-end space-x-2">
 
-            <p className="mr-2"><BiEdit /></p>
+            <p className="mr-2 cursor-pointer" onClick={()=>navigate("/edit/"+postId)}><BiEdit /></p>
             <p className="cursor-pointer" onClick={handleDeletePost}><MdDelete /></p>
           </div>}
         </div>
