@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImCross } from 'react-icons/im';
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { useParams } from "react-router-dom";
 
 
 const EditPost = () => {
+    const postId=useParams().id
     const [title, setTitle]=useState("")
     const [desc, setDesc]= useState("")
     const [file, setFile]= useState(null)
@@ -13,8 +15,25 @@ const EditPost = () => {
     const [cats, setCats] = useState([]);
 
     const fetchPost=async()=>{
+        try {
+            const res=await axios.get(URL+"/api/posts/"+postId)
+            setTitle(res.data.title)
+            setDesc(res.data.desc)
+            setFile(res.data.photo)
+            setCats(res.data.categories)
+
+
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
 
     }
+    useEffect(()=>{
+
+    },[postId])
+
 
     const deleteCategory = (index) => {
         const updatedCats = [...cats];
